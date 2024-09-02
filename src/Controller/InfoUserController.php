@@ -10,10 +10,24 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Core\Security;
+
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 #[Route('/profile')]
 final class InfoUserController extends AbstractController
 {
+
+    private $tokenStorage;
+    private $authorizationChecker;
+
+    public function __construct(TokenStorageInterface $tokenStorage, AuthorizationCheckerInterface $authorizationChecker)
+    {
+        $this->tokenStorage = $tokenStorage;
+        $this->authorizationChecker = $authorizationChecker;
+    }
+
     #[Route(name: 'app_info_user_index', methods: ['GET'])]
     public function index(InfoUserRepository $infoUserRepository): Response
     {
@@ -30,6 +44,10 @@ final class InfoUserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            // Set the authenticated user
+            $infoUser->setUser($this->tokenStorage->getToken()->getUser());
+
             $entityManager->persist($infoUser);
             $entityManager->flush();
 
