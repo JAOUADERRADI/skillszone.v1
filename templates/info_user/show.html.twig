@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}InfoUser{% endblock %}
+
+{% block body %}
+    <h1>InfoUser</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ info_user.id }}</td>
+            </tr>
+            <tr>
+                <th>FirstName</th>
+                <td>{{ info_user.firstName }}</td>
+            </tr>
+            <tr>
+                <th>LastName</th>
+                <td>{{ info_user.lastName }}</td>
+            </tr>
+            <tr>
+                <th>PhoneNumber</th>
+                <td>{{ info_user.phoneNumber }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_info_user_index') }}">back to list</a>
+
+    <a href="{{ path('app_info_user_edit', {'id': info_user.id}) }}">edit</a>
+
+    {{ include('info_user/_delete_form.html.twig') }}
+{% endblock %}
