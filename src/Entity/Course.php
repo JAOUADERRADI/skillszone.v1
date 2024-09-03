@@ -43,6 +43,7 @@ class Course
     public function __construct()
     {
         $this->lessons = new ArrayCollection();
+        $this->createdAt = new \DateTimeImmutable();  // Initialise createdAt à la date actuelle
     }
 
     public function getId(): ?int

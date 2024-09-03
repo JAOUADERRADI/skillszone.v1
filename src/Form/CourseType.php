@@ -11,6 +11,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints as Assert;
 
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class CourseType extends AbstractType
 {
@@ -34,9 +35,6 @@ class CourseType extends AbstractType
             ])
             ->add('description', null, [
                 'constraints' => [
-                    new Assert\Url([
-                        'message' => 'The image URL is not valid.',
-                    ]),
                     new Assert\NotBlank([
                         'message' => 'The image URL should not be blank.',
                     ]),
@@ -46,6 +44,7 @@ class CourseType extends AbstractType
                 'label' => 'Course Image (JPG, PNG file)',
                 'mapped' => false,
                 'required' => false,
+                'attr' => ['accept' => 'image/*'],
                 'constraints' => [
                     new Assert\File([
                         'maxSize' => '5M',
