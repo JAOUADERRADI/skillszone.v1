@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Lesson;
+use App\Entity\Course;
+use App\Entity\User;
 use App\Form\LessonType;
 use App\Repository\LessonRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -12,6 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[Route('/lesson')]
 final class LessonController extends AbstractController
@@ -31,7 +34,17 @@ final class LessonController extends AbstractController
         $form = $this->createForm(LessonType::class, $lesson);
         $form->handleRequest($request);
 
+        // Get the currently logged-in user
+        $user = $this->getUser();
+
         if ($form->isSubmitted() && $form->isValid()) {
+
+            // Verify that the user is the creator of the course
+            $course = $lesson->getCourse();
+            if ($course->getUser() !== $user) {
+                $this->addFlash('danger', 'You are not allowed to add lessons to this course.');
+                return $this->redirectToRoute('app_lesson_index');
+            }
 
             // Handle the video upload
             /** @var UploadedFile $videoFile  */

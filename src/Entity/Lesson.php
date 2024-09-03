@@ -32,6 +32,11 @@ class Lesson
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $video = null;
 
+    public function __construct()
+    {
+        $this->createdAt = new \DateTimeImmutable();  // Initialise createdAt à la date actuelle
+    }
+
     public function getId(): ?int
     {
         return $this->id;
