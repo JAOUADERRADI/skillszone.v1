@@ -29,6 +29,25 @@ class LessonType extends AbstractType
                 'class' => Course::class,
                 'choice_label' => 'title',
             ])
+            ->add('video', FileType::class, [
+                'label' => 'Video (MP4 file)',
+                // unmapped means that this field is not associated with any entity property
+                'mapped' => false,
+                // make it optional so you don't have to re-upload the video every time you edit the lesson
+                'required' => false,
+                // constraints for file validation
+                'constraints' => [
+                    new File([
+                        'maxSize' => '1024M',  // 1GB limit
+                        'mimeTypes' => [
+                            'video/mp4',
+                            'video/mpeg',
+                            'video/quicktime',
+                        ],
+                        'mimeTypesMessage' => 'Please upload a valid video file (MP4, MPEG, QuickTime)',
+                    ])
+                ],
+            ])
         ;
     }
 
