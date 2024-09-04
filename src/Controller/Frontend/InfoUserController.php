@@ -31,7 +31,7 @@ final class InfoUserController extends AbstractController
     #[Route(name: 'app_info_user_index', methods: ['GET'])]
     public function index(InfoUserRepository $infoUserRepository): Response
     {
-        return $this->render('info_user/index.html.twig', [
+        return $this->render('Frontend/info_user/index.html.twig', [
             'info_users' => $infoUserRepository->findAll(),
         ]);
     }
@@ -54,7 +54,7 @@ final class InfoUserController extends AbstractController
             return $this->redirectToRoute('app_info_user_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('info_user/new.html.twig', [
+        return $this->render('Frontend/info_user/new.html.twig', [
             'info_user' => $infoUser,
             'form' => $form,
         ]);
@@ -63,7 +63,7 @@ final class InfoUserController extends AbstractController
     #[Route('/{id}', name: 'app_info_user_show', methods: ['GET'])]
     public function show(InfoUser $infoUser): Response
     {
-        return $this->render('info_user/show.html.twig', [
+        return $this->render('Frontend/info_user/show.html.twig', [
             'info_user' => $infoUser,
         ]);
     }
@@ -80,7 +80,7 @@ final class InfoUserController extends AbstractController
             return $this->redirectToRoute('app_info_user_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('info_user/edit.html.twig', [
+        return $this->render('Frontend/info_user/edit.html.twig', [
             'info_user' => $infoUser,
             'form' => $form,
         ]);
