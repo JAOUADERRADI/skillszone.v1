@@ -1,0 +1,11 @@
+// Mixin for Flexbox layout
+// Parameters:
+// $justify   -  controls horizontal alignment (default: center)
+// $align     -  controls vertical alignment (default: center)
+// $direction -  controls the direction of the flex container (default: row)
+@mixin flex($justify: center, $align: center, $direction: row) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
+}
