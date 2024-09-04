@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Fronend;
+namespace App\Controller\Frontend;
 
 use App\Entity\Lesson;
 use App\Entity\Course;
