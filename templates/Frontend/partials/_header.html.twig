@@ -1,0 +1,61 @@
+{% block header %}
+    <header>
+        <div class="logo">
+            <a href="{{ path('app_home') }}">
+                SZ
+            </a>
+        </div>
+        <nav>
+            <ul class="center-nav">
+                <li>
+                    <a href="{{ path('app_course_index')}}">
+                        Cours
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        Evenements
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        Blog
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        About
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        Contact
+                    </a>
+                </li>
+                <div class="auth-links-mobile">
+                    <li>
+                        <a href="#">
+                            Login
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Sign Up
+                        </a>
+                    </li>
+                </div>
+            </ul>
+        </nav>
+        <div class="auth-links">
+            <a href="#">
+                Sign Up
+            </a>
+            <a href="#">
+                Login
+            </a>
+        </div>
+        <div class="mobile-menu">
+            ☰
+        </div>
+    </header>
+{% endblock %}

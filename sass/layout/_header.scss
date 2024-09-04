@@ -1,0 +1,132 @@
+@import "../config";
+@import "../mixins";
+
+// Header styles
+header {
+    width: 80%;
+    margin: auto;
+    color: $primary-dark;
+    padding: 1rem 2rem;
+
+    // Desktop flex layout
+    @include flex(space-between, center);
+    height: 80px;
+
+    .logo {
+      font-family: $font-secondary;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: $primary-white;
+    }
+
+    nav {
+      ul {
+        @include flex(flex-end, center); // Align items on the right
+
+        li {
+          list-style: none;
+          margin-left: 2rem;
+
+          a {
+            text-decoration: none;
+            font-family: $font-primary;
+            color: $primary-dark;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 8px;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+
+            &:hover {
+              color: $primary-dark-blue; // Change color on hover
+              background-color: $secondary-light-grey;
+            }
+          }
+        }
+        .auth-links-mobile {
+          display: none;
+        }
+      }
+    }
+
+    .auth-links {
+      color: $primary-dark;
+      font-size: 1rem;
+      font-weight: 500;
+      a {
+        border: 1px solid $primary-dark-blue;
+        padding: 8px 18px;
+        margin-left: 10px;
+        border-radius: 5px;
+        color: $primary-dark-blue;
+        transition: all 0.3s ease;
+        &:hover {
+          background-color: $primary-dark-blue;
+          color: $primary-white;
+        }
+        &:last-child {
+          background-color: $primary-dark-blue;
+          color: $primary-white;
+          &:hover {
+            background-color: $primary-white;
+            color: $primary-dark-blue;
+          }
+        }
+      }
+    }
+
+    // Mobile menu
+    .mobile-menu {
+      display: none; // Hide by default
+      font-size: 2rem;
+      color: $primary-dark-blue;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      width: 90%;
+      padding: 0;
+      // Mobile view
+      @include flex(space-between, center);
+
+      nav {
+        display: none; // Hide the navigation by default
+      }
+
+      .mobile-menu {
+        display: block; // Show the mobile menu icon
+      }
+      .auth-links {
+        display: none;
+      }
+    }
+
+    // Toggle mobile menu visibility
+    &.menu-open {
+      nav {
+        display: block;
+        position: absolute;
+        top: 80px;
+        right: 0;
+        background-color: $primary-dark-blue;
+        width: 100%;
+        padding: 1rem 2rem;
+
+        ul {
+          @include flex(column, flex-start, column);
+
+          li {
+            margin-left: 0;
+            margin-bottom: 1rem;
+
+            a {
+              font-size: 1.2rem;
+            }
+          }
+          .auth-links-mobile {
+            display: block;
+          }
+        }
+      }
+    }
+  }
