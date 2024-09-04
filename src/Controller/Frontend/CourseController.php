@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Frontend;
 
 use App\Entity\Course;
 use App\Form\CourseType;
@@ -31,7 +31,7 @@ final class CourseController extends AbstractController
     #[Route(name: 'app_course_index', methods: ['GET'])]
     public function index(CourseRepository $courseRepository): Response
     {
-        return $this->render('course/index.html.twig', [
+        return $this->render('Frontend/course/index.html.twig', [
             'courses' => $courseRepository->findAll(),
         ]);
     }
@@ -78,7 +78,7 @@ public function new(Request $request, EntityManagerInterface $entityManager, Slu
         return $this->redirectToRoute('app_course_index');
     }
 
-    return $this->render('course/new.html.twig', [
+    return $this->render('Frontend/course/new.html.twig', [
         'course' => $course,
         'form' => $form->createView(),
     ]);
@@ -88,7 +88,7 @@ public function new(Request $request, EntityManagerInterface $entityManager, Slu
     #[Route('/{id}', name: 'app_course_show', methods: ['GET'])]
     public function show(Course $course): Response
     {
-        return $this->render('course/show.html.twig', [
+        return $this->render('Frontend/course/show.html.twig', [
             'course' => $course,
         ]);
     }
@@ -105,7 +105,7 @@ public function new(Request $request, EntityManagerInterface $entityManager, Slu
             return $this->redirectToRoute('app_course_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('course/edit.html.twig', [
+        return $this->render('Frontend/course/edit.html.twig', [
             'course' => $course,
             'form' => $form,
         ]);
