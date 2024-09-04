@@ -3,4 +3,18 @@
     Hello HomeController!
 {% endblock %}
 {% block body %}
+    <header class="hero">
+        <div class="hero__left">
+            <h1 class="hero__title">
+                The Best Free Online Courses of All Time
+            </h1>
+            <p class="hero__subtitle">
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum fugiat nulla pariatur
+            </p>
+            <a href="{{ path('app_course_index')}}" class="hero__cta-button">
+                Explore Courses
+            </a>
+        </div>
+        <img src="https://cdn.pixabay.com/photo/2017/04/07/17/18/eyeglasses-2211445_1280.jpg" alt="" class="hero__right">
+    </header>
 {% endblock %}

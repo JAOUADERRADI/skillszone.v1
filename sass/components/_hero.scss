@@ -1,0 +1,79 @@
+@import "../config";
+@import "../mixins";
+
+.hero {
+    background-color: $primary-dark-blue;
+    min-height: 600px;
+    padding: 50px;
+    border-radius: 8px;
+    @include flex(space-between);
+
+    &__left {
+        flex: 1;
+        max-width: 50%;
+        border: 2px solid red;
+    }
+
+    &__right {
+        border: 2px solid green;
+        flex: 1;
+        max-width: 50%;
+        min-height: 550px;
+        border-radius: 8px;
+    }
+
+    &__title {
+        font-size: 70px;
+        font-weight: 800;
+        color: $primary-white;
+
+        @media (max-width: 480px) {
+            font-size: 1.75rem;
+        }
+    }
+
+    &__subtitle {
+        font-size: 1.125rem;
+        margin-bottom: 30px;
+        line-height: 1.6;
+        color: $primary-white;
+        max-width: 80%;
+
+        @media (max-width: 480px) {
+            font-size: 0.875rem;
+        }
+    }
+
+    &__cta-button {
+        margin-top: 40px;
+        @include cta-button();
+    }
+
+    @media (max-width: 768px) {
+        @include flex(space-between, center, column);
+        height: fit-content;
+        padding: 12px;
+
+        &__left,
+        &__right {
+            margin: auto;
+            text-align: center;
+            max-width: 100%;
+        }
+
+        &__title {
+            font-size: 2rem;
+            margin: auto;
+        }
+
+        &__subtitle {
+            font-size: 1rem;
+            max-width: 100%;
+            margin-top: 40px;
+        }
+
+        &__cta-button {
+            margin-bottom: 40px;
+        }
+    }
+}
