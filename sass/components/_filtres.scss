@@ -1,0 +1,29 @@
+@import "../config";
+@import "../mixins";
+
+/* Filters */
+.courses__filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.courses__filters::-webkit-scrollbar {
+    display: none;
+}
+
+.courses__filter {
+    border: 2px solid $primary-dark;
+    @include cta-button($primary-orange, $primary-dark-blue);
+}
+
+.courses__filter:hover {
+    @include cta-button($primary-dark-blue, $primary-orange);
+}
+
+.courses__filter--active {
+    @include cta-button($primary-dark-blue, $primary-orange);
+}

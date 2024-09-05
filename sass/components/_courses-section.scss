@@ -1,0 +1,30 @@
+@import "../config";
+@import "../mixins";
+
+.courses-section {
+    width: 70%;
+    margin: 80px auto;
+}
+
+.courses-section__header {
+    @include flex(space-between, center);
+    // background-color: red;
+
+    .courses-section__title {
+        flex: 1;
+        font-size: 3.2rem;
+        @media (max-width:480px){
+            font-size: 2.5rem;
+        }
+    }
+
+    .courses-section__description {
+        flex: 1;
+        margin-left: 200px;
+        font-size: 1.3rem;
+        color: $secondary-dark-grey;
+        @media (max-width:480px){
+            display: none;
+        }
+    }
+}
