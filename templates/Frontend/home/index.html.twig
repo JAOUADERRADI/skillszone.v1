@@ -17,5 +17,27 @@
         </div>
         <img src="https://cdn.pixabay.com/photo/2017/04/07/17/18/eyeglasses-2211445_1280.jpg" alt="" class="hero__right hidden">
     </header>
+
+
     {% include 'Frontend/partials/_stats-section.html.twig' %}
+
+
+    <section class="courses-section">
+        <div class="courses-section__header">
+            <h2 class="courses-section__title">
+                Highest Rated Online Courses
+            </h2>
+            <p class="courses-section__description">
+                Dignissim enim sit amet venenatis urna cursus eget nunc. Egestas sed sed risus pretium quam vulputate.
+            </p>
+        </div>
+
+        {% include 'Frontend/partials/_filtre.html.twig' %}
+
+        <div class="section__card">
+            {% include 'Frontend/partials/_card.html.twig' %}
+            {% include 'Frontend/partials/_card.html.twig' %}
+            {% include 'Frontend/partials/_card.html.twig' %}
+        </div>
+    </section>
 {% endblock %}

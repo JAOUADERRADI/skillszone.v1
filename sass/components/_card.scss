@@ -1,0 +1,102 @@
+@import "../config";
+@import "../mixins";
+
+.section__card {
+    @include flex(space-between, center);
+    @media (max-width:480px){
+        margin: auto;
+        flex-wrap: wrap;
+        gap: 45px;
+    }
+}
+
+/* Base styles for the card */
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    max-width: 400px;
+    min-width: 300px;
+
+    /* Image styling */
+    &__image img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    /* Card content section */
+    &__content {
+        padding: 16px;
+        @include flex(justify, start, column);
+
+        .card__category {
+            width: 100%;
+            margin-bottom: 15px;
+            @include flex(space-between, center)
+        }
+
+        /* Category label */
+        .card__category-label {
+            background-color: $secondary-light-grey;
+            color: $secondary-dark-grey;
+            font-size: 1rem;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        /* Price styling */
+        .card__price-amount {
+            display: block;
+            color: $primary-dark-blue;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        /* Info section (level, hours, rating) */
+        .card__info {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: $secondary-dark-grey;
+
+            .card__level,
+            .card__hours,
+            .card__rating {
+                display: inline-block;
+            }
+        }
+
+        /* Course title */
+        .card__title {
+            font-size: 1.5rem;
+            color: $primary-dark-blue;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        /* View Course link */
+        .card__link {
+            @include cta-button($primary-dark-blue, $primary-orange);
+        }
+    }
+    &:hover {
+        cursor: pointer;
+        transition: all .5s;
+        scale: (1.1);
+        -webkit-box-shadow: 10px 14px 15px -1px $primary-orange;
+        box-shadow: 10px 14px 15px -1px $primary-orange;
+    }
+}
+
+
+
+.card__link:hover {
+    color: #003366;
+}
+
+.card__link-icon {
+    margin-left: 5px;
+}
