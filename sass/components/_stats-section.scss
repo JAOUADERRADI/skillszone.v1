@@ -1,0 +1,37 @@
+@import "../config";
+@import "../mixins";
+
+.stats-section {
+    width: 100%;
+    margin: auto;
+    background-color: $secondary-light-grey;
+
+    .stats-section__card {
+        width: 80%;
+        margin: auto;
+        padding: 50px 0;
+        display: flex;
+
+        .stats-section__item {
+            text-align: center;
+            color: $primary-dark-blue;
+
+            .stats-section__number {
+                font-size: 48px;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+
+            .stats-section__description {
+                font-size: 18px;
+                line-height: 1.5;
+            }
+        }
+    }
+
+    @media (max-width: 768px ) {
+        .stats-section__card {
+            display: block;
+        }
+    }
+}

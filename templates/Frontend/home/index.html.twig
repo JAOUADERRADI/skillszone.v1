@@ -3,18 +3,19 @@
     Hello HomeController!
 {% endblock %}
 {% block body %}
-    <header class="hero">
-        <div class="hero__left">
-            <h1 class="hero__title">
+    <header class="hero hidden">
+        <div class="hero__left hidden">
+            <h1 class="hero__title hidden">
                 The Best Free Online Courses of All Time
             </h1>
-            <p class="hero__subtitle">
+            <p class="hero__subtitle hidden">
                 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum fugiat nulla pariatur
             </p>
-            <a href="{{ path('app_course_index')}}" class="hero__cta-button">
+            <a href="{{ path('app_course_index')}}" class="hero__cta-button hidden">
                 Explore Courses
             </a>
         </div>
-        <img src="https://cdn.pixabay.com/photo/2017/04/07/17/18/eyeglasses-2211445_1280.jpg" alt="" class="hero__right">
+        <img src="https://cdn.pixabay.com/photo/2017/04/07/17/18/eyeglasses-2211445_1280.jpg" alt="" class="hero__right hidden">
     </header>
+    {% include 'Frontend/partials/_stats-section.html.twig' %}
 {% endblock %}

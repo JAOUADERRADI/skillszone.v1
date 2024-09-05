@@ -4,6 +4,7 @@
 .hero {
     background-color: $primary-dark-blue;
     min-height: 600px;
+    margin-bottom: 80px;
     padding: 50px;
     border-radius: 8px;
     @include flex(space-between);
@@ -11,11 +12,11 @@
     &__left {
         flex: 1;
         max-width: 50%;
-        border: 2px solid red;
+        // border: 2px solid red;
     }
 
     &__right {
-        border: 2px solid green;
+        // border: 2px solid green;
         flex: 1;
         max-width: 50%;
         min-height: 550px;
@@ -34,7 +35,8 @@
 
     &__subtitle {
         font-size: 1.125rem;
-        margin-bottom: 30px;
+        margin-top: 40px;
+        margin-bottom: 60px;
         line-height: 1.6;
         color: $primary-white;
         max-width: 80%;
@@ -45,14 +47,13 @@
     }
 
     &__cta-button {
-        margin-top: 40px;
         @include cta-button();
     }
 
     @media (max-width: 768px) {
         @include flex(space-between, center, column);
         height: fit-content;
-        padding: 12px;
+        padding: 20px;
 
         &__left,
         &__right {

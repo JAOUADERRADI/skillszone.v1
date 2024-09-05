@@ -6,7 +6,6 @@ header {
     width: 80%;
     margin: auto;
     color: $primary-dark;
-    padding: 1rem 2rem;
 
     // Desktop flex layout
     @include flex(space-between, center);
@@ -103,6 +102,7 @@ header {
 
     // Toggle mobile menu visibility
     &.menu-open {
+
       nav {
         display: block;
         position: absolute;
