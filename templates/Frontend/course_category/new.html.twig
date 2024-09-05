@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New CourseCategory{% endblock %}
+
+{% block body %}
+    <h1>Create new CourseCategory</h1>
+
+    {{ include('Frontend/course_category/_form.html.twig') }}
+
+    <a href="{{ path('app_course_category_index') }}">back to list</a>
+{% endblock %}
