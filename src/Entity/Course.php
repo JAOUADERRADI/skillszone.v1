@@ -40,6 +40,9 @@ class Course
     #[ORM\OneToMany(targetEntity: Lesson::class, mappedBy: 'course')]
     private Collection $lessons;
 
+    #[ORM\ManyToOne(inversedBy: 'courses')]
+    private ?CourseCategory $category = null;
+
     public function __construct()
     {
         $this->lessons = new ArrayCollection();
@@ -149,6 +152,18 @@ class Course
                 $lesson->setCourse(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCategory(): ?CourseCategory
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?CourseCategory $category): static
+    {
+        $this->category = $category;
 
         return $this;
     }
