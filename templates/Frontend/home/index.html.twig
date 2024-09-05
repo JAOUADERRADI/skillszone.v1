@@ -35,9 +35,9 @@
         {% include 'Frontend/partials/_filtre.html.twig' %}
 
         <div class="section__card">
-            {% include 'Frontend/partials/_card.html.twig' %}
-            {% include 'Frontend/partials/_card.html.twig' %}
-            {% include 'Frontend/partials/_card.html.twig' %}
+            {% for course in courses | slice(0,4) %}
+                {% include 'Frontend/partials/_card.html.twig' %}
+            {% endfor %}
         </div>
     </section>
 {% endblock %}

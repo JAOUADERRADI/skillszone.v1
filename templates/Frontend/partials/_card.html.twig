@@ -1,14 +1,14 @@
 {% block card %}
-    <div class="card">
+    <div class="card" data-category="{{ course.category.id }}">
         <div class="card__image">
-            <img src="https://cdn.pixabay.com/photo/2017/04/07/17/18/eyeglasses-2211445_1280.jpg" alt="Photography Masterclass">
+            <img src="uploads/images/{{ course.image }}" alt="{{ course.title }}">
         </div>
         <div class="card__content">
             <div class="card__category">
                 <span class="card__category-label">
-                    Photography
+                    {{ course.category.name }}
                 </span>
-                                <span class="card__price-amount">
+                <span class="card__price-amount">
                     Free
                 </span>
             </div>
@@ -24,9 +24,9 @@
                 </span>
             </div>
             <h3 class="card__title">
-                Photography Masterclass: A Complete Guide to Photography
+                {{ course.title }}
             </h3>
-            <a href="#" class="card__link">
+            <a href="{{ path('app_course_show', { id: course.id }) }}" class="card__link">
                 View Course
                 <span class="card__link-icon">
                     →
