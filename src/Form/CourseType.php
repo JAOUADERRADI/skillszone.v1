@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Course;
 use App\Entity\User;
+use App\Entity\CourseCategory;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -56,6 +57,16 @@ class CourseType extends AbstractType
                     ]),
                 ],
             ])
+            ->add('category', EntityType::class, [
+                'class' => CourseCategory::class,
+                'choice_label' => 'name',
+                'placeholder' => 'Choose a category',
+                'constraints' => [
+                    new Assert\NotBlank([
+                        'message' => 'Please select a category.',
+                    ]),
+                ],
+            ]);
             // ->add('user', EntityType::class, [
             //     'class' => User::class,
             //     'choice_label' => 'id',
