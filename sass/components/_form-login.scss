@@ -1,0 +1,105 @@
+@import "../config";
+@import "../mixins";
+
+.form--login {
+    max-width: 500px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: $secondary-light-grey;
+    box-shadow: 0 4px 10px solid rgb(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.form__title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form__group {
+    margin-bottom: 15px;
+}
+
+.form__label {
+    display: block;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: $secondary-dark-grey;
+}
+
+.form__input {
+    width: 100%;
+    padding: 10px 0px;
+    border: 1px solid $secondary-light-grey;
+    font-size: 1rem;
+    transition: 0.3S;
+}
+
+.form__input:focus {
+    border-color: $primary-dark-blue;
+    outline: none;
+}
+
+.form__error {
+    color: $secondary-red;
+    padding: 10px;
+    background-color: $secondary-light-grey;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.form__logged-in {
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    color: $secondary-green;
+}
+
+.form__group--checkbox {
+    display: flex;
+    align-items: center;
+}
+
+.form__label--checkbox {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.form__button {
+    @include cta-button($primary-dark-blue, $primary-orange);
+}
+
+input {
+    transition: all 1s;
+}
+
+input:invalid:not(:placeholder-shown) {
+    animation: shake 0.3s ease;
+    border-color: $secondary-red;
+    // background-image: url('green.svg');
+}
+
+input:valid:not(:placeholder-shown) {
+    border-color: $secondary-green;
+    // background-image: url('red.svg');
+}
+
+input:valid:not(:placeholder-shown),
+input:invalid:not(:placeholder-shown) {
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: calc(100% - 10px);
+}
+
+input:invalid:not(:placeholder-shown) ~ button[type="submit"] {
+    opacity: .6;
+    pointer-events: none;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
