@@ -1,0 +1,110 @@
+@import "../config";
+@import "../mixins";
+
+
+.course {
+    max-width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+
+    &__header {
+        background-color: #f7f7f7;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+    }
+
+    &__title {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+    }
+
+    &__description {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+    }
+
+    &__info {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    &__enroll-form {
+        margin-bottom: 20px;
+    }
+
+    &__enroll-status {
+        color: $secondary-dark-grey;
+        font-weight: bold;
+    }
+
+    &__admin-actions {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    &__content {
+        margin-top: 40px;
+    }
+
+    &__content-title {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+
+    &__lessons {
+        padding: 0;
+    }
+
+    &__lesson {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        background-color: $primary-white;
+        margin-bottom: 10px;
+        border-radius: 4px;
+    }
+
+    &__lesson-title {
+        font-weight: bold;
+    }
+
+    &__lesson-duration {
+        color: $secondary-dark-grey;
+    }
+
+    &__no-lessons {
+        color: $secondary-light-grey;
+        font-style: italic;
+    }
+
+    &__additional-info {
+        margin-top: 40px;
+    }
+
+    &__additional-info-title {
+        font-size: 1.6rem;
+        margin-bottom: 15px;
+    }
+
+    &__additional-info-text {
+        font-size: 1.2rem;
+        color: $secondary-dark-grey;
+    }
+
+    .button {
+        @include cta-button($primary-dark-blue, $primary-orange);
+    }
+
+}
+
+.course__level,
+.course__duration,
+.course__rating {
+    font-size: 1rem;
+    color: $secondary-dark-grey;
+}
