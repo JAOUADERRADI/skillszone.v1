@@ -1,5 +1,5 @@
 {% block card %}
-    <div class="card" data-category="{{ course.category.id }}">
+    <a href="{{ path('app_course_show', { id: course.id }) }}" class="card" data-category="{{ course.category.id }}">
         <div class="card__image">
             <img src="uploads/images/{{ course.image }}" alt="{{ course.title }}">
         </div>
@@ -26,12 +26,12 @@
             <h3 class="card__title">
                 {{ course.title }}
             </h3>
-            <a href="{{ path('app_course_show', { id: course.id }) }}" class="card__link">
+            <div href="{{ path('app_course_show', { id: course.id }) }}" class="card__link">
                 View Course
                 <span class="card__link-icon">
                     →
                 </span>
-            </a>
+            </div>
         </div>
-    </div>
+    </a>
 {% endblock %}

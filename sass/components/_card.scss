@@ -17,7 +17,6 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     max-width: 300px;
-
     /* Image styling */
     &__image img {
         width: 300px;
@@ -89,8 +88,6 @@
         box-shadow: 10px 14px 15px -1px $primary-orange;
     }
 }
-
-
 
 .card__link:hover {
     color: #003366;
