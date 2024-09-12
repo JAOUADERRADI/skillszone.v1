@@ -33,7 +33,7 @@
             </div>
             <!-- Button to enroll -->
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                {% if not user.hasEnrolled(course) %}
+                {% if not isEnrolled %}
                     <form method="post" action="{{ path('app_course_enroll', {id: course.id}) }}" class="course__enroll-form">
                         <button type="submit" class="button button--primary course__enroll-button">
                             Enroll Now

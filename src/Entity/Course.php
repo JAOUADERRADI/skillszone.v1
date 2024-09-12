@@ -43,10 +43,17 @@ class Course
     #[ORM\ManyToOne(inversedBy: 'courses')]
     private ?CourseCategory $category = null;
 
+    /**
+     * @var Collection<int, Enrollment>
+     */
+    #[ORM\OneToMany(targetEntity: Enrollment::class, mappedBy: 'course')]
+    private Collection $enrollments;
+
     public function __construct()
     {
         $this->lessons = new ArrayCollection();
         $this->createdAt = new \DateTimeImmutable();  // Initialise createdAt à la date actuelle
+        $this->enrollments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -164,6 +171,36 @@ class Course
     public function setCategory(?CourseCategory $category): static
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Enrollment>
+     */
+    public function getEnrollments(): Collection
+    {
+        return $this->enrollments;
+    }
+
+    public function addEnrollment(Enrollment $enrollment): static
+    {
+        if (!$this->enrollments->contains($enrollment)) {
+            $this->enrollments->add($enrollment);
+            $enrollment->setCourse($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEnrollment(Enrollment $enrollment): static
+    {
+        if ($this->enrollments->removeElement($enrollment)) {
+            // set the owning side to null (unless already changed)
+            if ($enrollment->getCourse() === $this) {
+                $enrollment->setCourse(null);
+            }
+        }
 
         return $this;
     }
