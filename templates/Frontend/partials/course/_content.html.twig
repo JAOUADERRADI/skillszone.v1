@@ -1,0 +1,52 @@
+<div class="course-layout">
+    <!-- Sidebar: Liste des leçons -->
+    <aside class="course-sidebar">
+        <h3 class="sidebar-title">Course Content</h3>
+        <ul class="lesson-list">
+            {% for lesson in course.lessons %}
+                <li class="lesson-item {% if lesson.id == lesson.id %}active{% endif %}">
+                    <a href="#">
+                        <div class="lesson-title">{{ lesson.title }}</div>
+                        <div class="lesson-meta">
+                            {# <span>{{ lesson.duration }} mins</span> #}
+                            {# {% if lesson.completed %}
+                                <span class="lesson-status completed">✔ Completed</span>
+                            {% endif %} #}
+                        </div>
+                    </a>
+                </li>
+            {% else %}
+                <p class="info-message">No lessons available for this course yet.</p>
+            {% endfor %}
+        </ul>
+    </aside>
+
+    <!-- Main Section: Leçon en cours -->
+    <main class="course-content">
+        <!-- Lecture Video -->
+        <div class="lesson-video">
+            {% if isEnrolled %}
+                {% for lesson in course.lessons %}
+                    <video controls>
+                        <source src="{{ asset('uploads/videos/' ~ lesson.video) }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                {% endfor %}
+            {% else %}
+                <p class="info-message">You are not enrolled in this course. Please enroll to access the videos.</p>
+            {% endif %}
+        </div>
+
+        {% if isEnrolled %}
+        <!-- Leçon Navigation -->
+        <div class="lesson-navigation">
+            {# {% if previousLesson %} #}
+            <a href="" class="button button--secondary">Previous Lesson</a>
+            {# {% endif %} #}
+            {# {% if nextLesson %} #}
+            <a href="" class="button button--primary">Next Lesson</a>
+            {# {% endif %} #}
+        </div>
+        {% endif %}
+    </main>
+</div>

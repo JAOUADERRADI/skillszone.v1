@@ -1,0 +1,10 @@
+{% if is_granted('ROLE_ADMIN') %}
+    <div class="course__admin-actions">
+        <a href="{{ path('app_course_edit', {id: course.id}) }}" class="button button--secondary">
+            Edit Course
+        </a>
+        <a href="{{ path('app_course_index') }}" class="button button--secondary">
+            Back to list
+        </a>
+    </div>
+{% endif %}

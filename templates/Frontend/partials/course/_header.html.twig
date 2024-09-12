@@ -1,0 +1,38 @@
+<div class="course__header">
+    <h1 class="course__title">
+        {{ course.title }}
+    </h1>
+    <p class="course__description">
+        {{ course.description }}
+    </p>
+    <div class="course__info">
+        <span class="course__level">
+            Facil
+        </span>
+        <span class="course__duration">
+            12 hours
+        </span>
+        <span class="course__rating">
+            Rating
+        </span>
+    </div>
+
+    <!-- Button to enroll -->
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {% if not isEnrolled %}
+            <form method="post" action="{{ path('app_course_enroll', {id: course.id}) }}" class="course__enroll-form">
+                <button type="submit" class="button button--primary course__enroll-button">
+                    Enroll Now
+                </button>
+            </form>
+        {% else %}
+            <p class="course__enroll-status">
+                You are already enrolled in this course.
+            </p>
+        {% endif %}
+    {% else %}
+        <a href="{{ path('app_login') }}" class="button button--primary course__enroll-button">
+            Login to Enroll
+        </a>
+    {% endif %}
+</div>

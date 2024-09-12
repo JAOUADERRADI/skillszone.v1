@@ -1,96 +1,19 @@
 {% extends 'base.html.twig' %}
 {% block title %}
-    {{ course.title }}
-    - Learn
-    {{ course.title }}
+    {{ course.title }} - Learn
 {% endblock %}
 {% block body %}
-    <div
-        class="course">
+    <div class="course">
         <!-- Section Header -->
-        <div class="course__header">
-            <h1 class="course__title">
-                {{ course.title }}
-            </h1>
-            <p class="course__description">
-                {{ course.description }}
-            </p>
-            <div class="course__info">
-                <span
-                    class="course__level">
-                    {#{{ course.level }}#}
-                    Facil
-                </span>
-                <span
-                    class="course__duration">
-                    {#{{ course.duration }}#}
-                    12 hours
-                </span>
-                <span class="course__rating">
-                    Rating
-                    {#{{ course.rating }} ({{ course.reviews }} reviews)#}
-                </span>
-            </div>
-            <!-- Button to enroll -->
-            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                {% if not isEnrolled %}
-                    <form method="post" action="{{ path('app_course_enroll', {id: course.id}) }}" class="course__enroll-form">
-                        <button type="submit" class="button button--primary course__enroll-button">
-                            Enroll Now
-                        </button>
-                    </form>
-                {% else %}
-                    <p class="course__enroll-status">
-                        You are already enrolled in this course.
-                    </p>
-                {% endif %}
-            {% else %}
-                <a href="{{ path('app_login') }}" class="button button--primary course__enroll-button">
-                    Login to Enroll
-                </a>
-            {% endif %}
-            <!-- Admin-only buttons -->
-            {% if is_granted('ROLE_ADMIN') %}
-                <div class="course__admin-actions">
-                    <a href="{{ path('app_course_edit', {id: course.id}) }}" class="button button--secondary">
-                        Edit Course
-                    </a>
-                    <a href="{{ path('app_course_index') }}" class="button button--secondary">
-                        Back to list
-                    </a>
-                </div>
-            {% endif %}
-        </div>
+        {% include 'Frontend/partials/course/_header.html.twig' %}
+
         <!-- Section Additional Info -->
-        <div class="course__additional-info">
-            <h3 class="course__additional-info-title">
-                About this course
-            </h3>
-            {# <p class="course__additional-info-text">{{ course.additional_info }}</p> #}
-        </div>
+        {# {% include 'Frontend/partials/course/_additional_info.html.twig' %} #}
+
         <!-- Section Course Content -->
-        <div class="course__content">
-            <h2 class="course__content-title">
-                Course Content
-            </h2>
-            <ul class="course__lessons">
-                {% for lesson in course.lessons %}
-                    <li class="course__lesson">
-                        <strong class="course__lesson-title">
-                            {{ lesson.title }}
-                        </strong>
-                        <span
-                            class="course__lesson-duration">
-                            {#{{ lesson.duration }}#}
-                            mins
-                        </span>
-                    </li>
-                {% else %}
-                    <p class="course__no-lessons">
-                        No lessons available yet for this course.
-                    </p>
-                {% endfor %}
-            </ul>
-        </div>
+        {% include 'Frontend/partials/course/_content.html.twig' %}
+
+        <!-- Admin-only buttons -->
+        {% include 'Frontend/partials/course/_admin_actions.html.twig' %}
     </div>
 {% endblock %}
