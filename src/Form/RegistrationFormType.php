@@ -8,6 +8,7 @@ use App\Entity\User;
 
 use Symfony\Component\Form\AbstractType; // Base class for creating form types in Symfony
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType; // Form type for creating a checkbox field
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType; // Import the EmailType class for creating an email input field in the form
 use Symfony\Component\Form\Extension\Core\Type\PasswordType; // Form type for creating a password input field
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType; // Form type for creating a field that repeats another field, typically used for password confirmation
@@ -79,6 +80,16 @@ class RegistrationFormType extends AbstractType
                 ],
                 'invalid_message' => 'The password fields must match.',
             ])
+            // ->add('roles', ChoiceType::class, [
+            //     'choices' => [
+            //         'Admin' => 'ROLE_ADMIN',
+            //         'User' => 'ROLE_USER',
+            //         'Teacher' => 'ROLE_TEACHER',
+            //     ],
+            //     'expanded' => false, // false: dropdown (select), true: radio buttons
+            //     'multiple' => true,  // multiple selection allowed
+            //     'label' => 'Roles',
+            // ])
         ;
     }
 
